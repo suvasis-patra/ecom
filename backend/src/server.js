@@ -24,6 +24,11 @@ if (config.NODE_ENV === "production") {
   });
 }
 
-app.listen(config.PORT, () => {
-  connectDB().then(() => console.log(`Server started at ${config.PORT}`));
-});
+const startServer = async () => {
+  await connectDB();
+  app.listen(config.PORT, () => {
+    console.log(`Server started at ${config.PORT}`);
+  });
+};
+
+startServer();
